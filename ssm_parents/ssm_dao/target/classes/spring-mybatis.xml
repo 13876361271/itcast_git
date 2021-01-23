@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    在这个配置文件中配置什么，配置和数据库有关的信息还有和mybatis有关的信息-->
+<!--    配置mybatis映射配置文件，将映射配置文件中的各种功能代替，比如：对连接诶池的创建，对映射配置文件的包扫描-->
+<!--    进行spring的注接包扫描-->
+<!--    对连接诶池的创建-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+        <property name="url" value="jdbc:mysql://localhost:3306/itcast_maven?characterEncoding=utf8"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    </bean>
+<!--    配置sqlSessionFactoryBean，这里要配置它的什么属性呢？-->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        动态代理创建接口的子实现类需要连接，因为是对虚拟机外部资源的调用，所以需要配置连接池属性来实现给定连接-->
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.zcp.pojo"/>
+    </bean>
+<!--    对映射配置文件的包扫描，扫描其接口用来也做了依赖注入，需要配置什么属性吗？-->
+    <bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+<!--        需要配置basePackage的属性实现包扫描-->
+        <property  name="basePackage" value="com.zcp.dao"/>
+        <property name="beanName" value="eee"/>
+    </bean>
+
+</beans>
+
+
+

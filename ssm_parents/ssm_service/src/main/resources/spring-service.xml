@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+<!--    包扫描用于ioc-->
+    <context:component-scan base-package="com.zcp.service"/>
+<!--    创建一个事务管理器-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+<!--    指定属性中的数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--    方式一：声明式事务配置-->
+    <tx:advice id="txad" transaction-manager="transactionManager">
+<!--        配置传播特性属性-->
+        <tx:attributes>
+<!--            对应方法参与事务并且在事务下执行,事务隔离剂别使用默认隔离级别,发生异常需要事务回滚-->
+            <tx:method name="update" isolation="DEFAULT" timeout="-1" propagation="REQUIRED"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="findAll" read-only="true" isolation="DEFAULT" timeout="-1"
+                       propagation="REQUIRED"
+                       rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+
+    </tx:advice>
+<!--    AOP声明式事务配置（配置切入点，通知关联切入点）-->
+    <aop:config>
+<!--        切点指点,expression中填写方法名-->
+        <aop:pointcut id="txpc" expression="execution(* com.zcp.service.Impl.ItemServiceImpl.*(..))"/>
+<!--        配置通知-->
+        <aop:advisor advice-ref="txad" pointcut-ref="txpc"/>
+    </aop:config>
+
+<!--    方式二：注解方式事务配置
+    告诉spring我要用事务的注解驱动了，并配置一个事务管理者
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    扫描service包上多有带有注解驱动的方法，并将该方法添加到事务中执行
+    <context:component-scan base-package="com.zcp.service.Impl"/>
+    引入spring-mybatis.xml-->
+    <import resource="spring-mybatis.xml"/>
+</beans>

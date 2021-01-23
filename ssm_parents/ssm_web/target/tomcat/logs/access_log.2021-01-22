@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:32 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-1 34
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:33 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-2 0
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:33 +0800] "GET / HTTP/1.1" 404 951 http-bio-8888-exec-4 4
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:34 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-6 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:43 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-3 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:44 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-8 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:45 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8888-exec-9 1
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:24:47 +0800] "GET /items/findAll HTTP/1.1" 200 3199 http-bio-8888-exec-7 326
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:25:37 +0800] "GET /items/update?name=%E8%8D%89%E6%8B%9F%E5%90%97%E9%82%A3%E9%82%A3%E9%82%A3%E9%82%A3%E7%8E%8B%E4%BA%94&price=23333.3&pic=3&createtime=1111%2F01%2F01&detail=%E8%8D%89%E6%8B%9F%E5%90%97%E5%A6%88%E5%A6%88%E5%A6%88%E5%A6%88%E5%90%97 HTTP/1.1" 302 - http-bio-8888-exec-7 13
+0:0:0:0:0:0:0:1 - - [22/Jan/2021:11:25:37 +0800] "GET /items/findAll HTTP/1.1" 200 3461 http-bio-8888-exec-7 7

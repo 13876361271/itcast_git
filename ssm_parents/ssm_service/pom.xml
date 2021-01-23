@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ssm_parents</artifactId>
+        <groupId>com.zcp</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ssm_service</artifactId>
+<!--service层的思路是什么，需求是什么？查询数据列表，方法接收搜索条件，无搜索条件，返回参数为list的Javabean对象，
+无参有返回-->
+<!--    思路：在pom文件中导入文件中导入要用到的依赖,引入依赖为dao层的依赖和事务相关的,-->
+<!--     ,在这之前先写一个在service模块中创建一个类用来写方法接口规范编程代码的书写-->
+    <dependencies>
+<!--        依赖dao层的模块-->
+        <dependency>
+            <groupId>com.zcp</groupId>
+            <artifactId>ssm_dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+<!--        spring事务依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+<!--配置切面的依赖-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
